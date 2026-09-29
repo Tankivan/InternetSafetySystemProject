@@ -20,11 +20,11 @@ async def read_role_selection(request: Request):
 async def read_mode_selection(request: Request):
     return templates.TemplateResponse({"request": request}, "mode_selection.html")
 
-@app.get("/questions", responce_class=HTMLResponse)
-async def read_questions(request: Request)
+@app.get("/questions", response_class=HTMLResponse)
+async def read_questions(request: Request):
     return templates.TemplateResponse({"request": request}, "questions.html")
 
-@app.get("/answers", responce_class=HTMLResponse)
-async def read_answers(request: Request)
+@app.get("/answers", response_class=HTMLResponse)
+async def read_answers(request: Request):
     return templates.TemplateResponse({"request": request}, "answers.html")
 
