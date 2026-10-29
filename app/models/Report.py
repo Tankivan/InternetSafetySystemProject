@@ -2,10 +2,8 @@ from sqlalchemy import Integer, String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 from sqlalchemy import ForeignKey
+from ..database.database import Base
 
-
-class Base(DeclarativeBase):
-    pass
 
 class Report(Base):
     report_id : Mapped[int] = mapped_column(Integer, primary_key= True)

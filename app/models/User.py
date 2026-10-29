@@ -1,9 +1,7 @@
 from sqlalchemy import Integer, String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
-
-class Base(DeclarativeBase):
-    pass
+from ..database.database import Base
 
 class User(Base):
     __tablename__ = "User"

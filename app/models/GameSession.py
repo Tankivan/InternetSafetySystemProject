@@ -1,12 +1,10 @@
-from datetime import time
+from datetime import datetime
 from sqlalchemy import Integer, String, Boolean, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 from sqlalchemy import ForeignKey
+from ..database.database import Base
 
-
-class Base(DeclarativeBase):
-    pass
 
 class GameSession(Base):
     __tablename__ = "GameSession"
@@ -18,7 +16,7 @@ class GameSession(Base):
     difficulty  : Mapped[int] = mapped_column(Integer, nullable=False) # такая же логика
     location : Mapped[str] = mapped_column(String(50), nullable=False)
     result : Mapped[int] = mapped_column(Integer)
-    completion_time: Mapped[time] =mapped_column(DateTime) # Возможно понадобится исправление. На данный записывает время прохождения, а не за сколько было пройдено.
+    completion_time: Mapped[datetime] =mapped_column(DateTime) # Возможно понадобится исправление. На данный записывает время прохождения, а не за сколько было пройдено.
     error_count: Mapped[int] = mapped_column(Integer, nullable=False)
     score: Mapped[int] = mapped_column(Integer, nullable= False)
     achievements: Mapped[str] = mapped_column(String(100), nullable=False)
