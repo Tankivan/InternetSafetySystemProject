@@ -335,7 +335,6 @@ function handleNext() {
 
 .modal-content {
     background: #fff !important;
-    color: #000000 !important;
     padding: 40px;
     border-radius: 30px;
     max-width: 600px;
@@ -346,13 +345,11 @@ function handleNext() {
 }
 
 .modal-content h2 {
-    color: #000000 !important;
     font-size: 32px;
     margin-bottom: 20px;
 }
 
 .modal-content p {
-    color: #000000 !important;
     font-size: 20px;
     line-height: 1.5;
     margin-bottom: 30px;
