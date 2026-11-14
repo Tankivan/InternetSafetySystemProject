@@ -67,7 +67,7 @@ function onNameInput(event: Event) {
 .settings-page {
     min-height: 100vh;
     height: 100vh;
-    background: #f5f5f7;
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,14 +80,14 @@ function onNameInput(event: Event) {
 
 .circuit-bg {
     position: absolute;
-    right: -120px;
+    right: -0.4px;
     top: 50%;
     transform: translateY(-50%);
-    height: 85%;
+    height: 90%;
     width: auto;
     pointer-events: none;
     z-index: 1;
-    mix-blend-mode: multiply;
+    opacity: 0.9;    
 }
 
 .content {

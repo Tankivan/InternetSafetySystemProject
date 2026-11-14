@@ -1,18 +1,26 @@
 <template>
     <div class="mode-page">
-        <img src="../assets/icons/circuit1.png" alt="circuit-bg" class="circuit-bg"/>
+      <img src="../assets/icons/circuit2.png" alt="" class="circuit2-bg" />
 
-        <div class="content">
-            <h1 class="title">
-                Выбор роли: <span class="role-name">{{ roleName }}</span>
-            </h1>
+      <div class="content">
+        <h1 class="title">
+            Выбор роли: <span class="role-name">{{ roleTitle }}</span>
+        </h1>
 
-            <div class="modes">
-                <button class="mode-btn" @click="selectMode('story')">Сюжет</button>
-                <button class="mode-btn" @click="selectMode('minigame')">Мини-игры</button>
-                <button class="mode-btn" @click="selectMode('time')">Испытание на время</button>
-            </div>
-        </div>
+        <div class="modes">
+            <button class="mode-btn" @click="selectMode('story')">
+                Сюжет
+            </button>
+
+            <button class="mode-btn" @click="selectMode('minigame')">
+                Мини-игры
+            </button>
+
+            <button class="mode-btn" @click="selectMode('time')">
+                Испытание на время
+            </button>
+        </div>  
+      </div>
     </div>
 </template>
 
@@ -25,90 +33,68 @@ import type { GameMode } from '../types/models'
 const router = useRouter()
 const userStore = useUserStore()
 
-const roleNames: Record<string, string> = {
-    schoolboy: 'Школьник',
-    student: 'Студент',
-    senior: 'Пожилой человек',
-}
-
-const roleName = computed(() => {
-    const role = userStore.role
-    return role ? roleNames[role] || 'Не выбрана' : 'Не выбрана'
+const roleTitle = computed(() => {
+    if (userStore.role === 'schoolboy') return 'Школьник'
+    if (userStore.role === 'student') return 'Студент'
+    if (userStore.role === 'senior') return 'Пожилой человек'
+    return ''
 })
 
 function selectMode(mode: GameMode) {
     userStore.setMode(mode)
-    router.push(`/game/${mode}`)
+    router.push('/game')
 }
 </script>
 
 <style scoped>
 .mode-page {
-    min-height: 100vh;
     height: 100vh;
-    background: #f5f5f7;
-    display: flex;
+    background: #ffffff;
+    display: flex;    
     align-items: center;
     justify-content: center;
     font-family: Arial, sans-serif;
-    padding: 40px 60px;
+    padding: 40px 60px;   
+    box-sizing: border-box; 
     position: relative;
     overflow: hidden;
-    box-sizing: border-box;
-}
-
-.circuit-bg {
-    position: absolute;
-    left: -180px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 110%;
-    width: auto;
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: multiply;
 }
 
 .content {
-    margin-top: -50px;
     text-align: left;
     z-index: 2;
     max-width: 700px;
-    margin-left: 380px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 70vh;
-    padding-top: 0;
+    margin-left: 300px;
+    margin-bottom: 100px;
 }
 
 .title {
-    font-size: 52px;
-    font-weight: 900;
+    font-size: 45px;
+    font-weight: 900; 
+    margin-top: -29px;   
+    margin-bottom: 20px;
     letter-spacing: 1px;
-    color: #000;
-    margin: 0;
+    white-space: nowrap;
 }
 
 .role-name {
-    font-size: 42px;
-    font-weight: 400;
     font-style: italic;
-    margin-left: 10px;
+    font-weight: 900;
+    display: inline;
 }
 
 .modes {
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    margin-bottom: 80px;
+    gap: 35px;
+    margin-top: 150px;
+    margin-left: 40px;
 }
 
 .mode-btn {
     background: none;
     border: none;
-    font-size: 40px;
+    font-size: 38px;
     font-style: italic;
     font-family: inherit;
     color: #000;
@@ -120,5 +106,17 @@ function selectMode(mode: GameMode) {
 
 .mode-btn:hover {
     transform: translateX(15px);
+}
+
+.circuit2-bg {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 75%;
+    width: auto;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 1;
 }
 </style>
